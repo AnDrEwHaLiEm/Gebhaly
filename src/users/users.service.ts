@@ -30,7 +30,7 @@ export class UserService {
 
 
     async getOne(_id: string) {
-        const result = await this.userModel.findById({ _id });
+        const result =  await this.userModel.findById({ _id }).select("-password");
         return result;
     }
 
@@ -51,6 +51,6 @@ export class UserService {
     }
 
     async findAll() {
-        return this.userModel.find().exec();
+        return this.userModel.find().select("-password");
     }
 }
